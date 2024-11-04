@@ -1,9 +1,8 @@
 ---
 title: Nextra 4 RC.0 x App Router
 description:
-  App Router, Turbopack, new Rust search Pagefind, RSC
-  i18n, server/client components, smallest bundle size EVER for a Nextra-powered
-  website, GitHub Alert Syntax
+  App Router, Turbopack, new Rust search Pagefind, RSC i18n, server/client components, smallest
+  bundle size EVER for a Nextra-powered website, GitHub Alert Syntax
 date: 2024-11-04
 authors: [dimitri]
 image: https://nextra.site/og?title=Nextra%204%0AApp%20Router%20/%20Turbopack
@@ -36,17 +35,11 @@ export function Removed({ children }) {
 export function Video({ src, alt }) {
   return (
     <>
-      <video
-        autoPlay="autoplay"
-        loop
-        muted
-        playsInline
-        className="mt-6 rounded-md"
-      >
+      <video autoPlay="autoplay" loop muted playsInline className="mt-6 rounded-md">
         <source src={src} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      <p className="text-center text-sm italic mt-2">{alt}</p>
+      <p className="mt-2 text-center text-sm italic">{alt}</p>
     </>
   )
 }
@@ -55,15 +48,15 @@ export function Video({ src, alt }) {
 
 ## App Router Support
 
-[Pages Router](https://nextjs.org/docs/pages) support has been removed, Nextra 4
-is fully compatible with Next.js [App Router](https://nextjs.org/docs/app).
+[Pages Router](https://nextjs.org/docs/pages) support has been removed, Nextra 4 is fully compatible
+with Next.js [App Router](https://nextjs.org/docs/app).
 
 ### New 2 Rendering Modes
 
 #### `content` Directory Convention
 
-The first mode is the easiest way to migrate your existing Nextra website from
-Pages router. To do follow these steps:
+The first mode is the easiest way to migrate your existing Nextra website from Pages router. To do
+follow these steps:
 
 <Steps>
 
@@ -105,8 +98,8 @@ you should get the following structure:
 
 > [!TIP]
 >
-> Consider the single catch-all route `[[...mdxPath]]/page.jsx` as a gateway to
-> your `content` directory.
+> Consider the single catch-all route `[[...mdxPath]]/page.jsx` as a gateway to your `content`
+> directory.
 
 <h5>You are ready to go!</h5>
 
@@ -114,8 +107,8 @@ you should get the following structure:
 >
 > In Web you can found article such as
 > [Refreshing the Next.js App Router When Your Markdown Content Changes](https://steveruiz.me/posts/nextjs-refresh-content)
-> where you need to install unnecessary dependency like `concurrently` and `ws`,
-> mentioned article is adapted on
+> where you need to install unnecessary dependency like `concurrently` and `ws`, mentioned article
+> is adapted on
 > [Dan Abramov workaround with `<AutoRefresh>` component and dev web socket server](https://github.com/hashicorp/next-remote-watch/issues/42#issuecomment-1794052655).
 > Nextra's `useContentDir` mode provide ultimate DX:
 >
@@ -123,8 +116,7 @@ you should get the following structure:
 > - you don't need to restart your server on changes in `content` directory
 > - hot reloading works out of box
 > - you can use `import` statements in MDX files and
->   [static images](https://nextra.site/docs/guide/image#static-image) works as
->   well
+>   [static images](https://nextra.site/docs/guide/image#static-image) works as well
 >
 > See Nextra's
 > [example of docs website](https://github.com/shuding/nextra/tree/d5cb1bc0e84494cbcc8decbae56fb091ce9999f0/examples/docs)
@@ -138,11 +130,10 @@ you should get the following structure:
 
 The second mode follows
 [Next.js App Router convention](https://nextjs.org/docs/getting-started/project-structure#app-routing-conventions)
-but with enhanced page extensions as `page.{md,mdx}` and don't requires
-additional steps to setup.
+but with enhanced page extensions as `page.{md,mdx}` and don't requires additional steps to setup.
 
-Above [`content` directory convention structure](#add-mdxpathpagejsx-file), with
-this mode will looks like:
+Above [`content` directory convention structure](#add-mdxpathpagejsx-file), with this mode will
+looks like:
 
 <FileTree>
   <FileTree.Folder name="app" open>
@@ -167,11 +158,9 @@ this mode will looks like:
 
 ## Turbopack Support
 
-After
-[almost 2 years of requesting this feature](https://github.com/shuding/nextra/issues/1054),
-Nextra 4 supports [Turbopack](https://nextjs.org/docs/architecture/turbopack),
-incremental bundler written in Rust. To benefit it, simple append the
-`--turbopack` flag to your development command:
+After [almost 2 years of requesting this feature](https://github.com/shuding/nextra/issues/1054),
+Nextra 4 supports [Turbopack](https://nextjs.org/docs/architecture/turbopack), incremental bundler
+written in Rust. To benefit it, simple append the `--turbopack` flag to your development command:
 
 ```diff filename="package.json"
 "scripts": {
@@ -189,13 +178,12 @@ incremental bundler written in Rust. To benefit it, simple append the
 >
 > Only serializable options are supported:
 >
-> At the time of writing this blog **only JSON serializable values** can be
-> passed in `nextra` function. This mean that with Turbopack enabled you can't
-> pass custom `remarkPlugins`, `rehypePlugins` or `recmaPlugins` since they are
-> functions.
+> At the time of writing this blog **only JSON serializable values** can be passed in `nextra`
+> function. This mean that with Turbopack enabled you can't pass custom `remarkPlugins`,
+> `rehypePlugins` or `recmaPlugins` since they are functions.
 >
-> The following options could be passed only without Turbopack or only while
-> building your app with `next build`
+> The following options could be passed only without Turbopack or only while building your app with
+> `next build`
 > ([since Turbopack isn't support `next build` for now](https://nextjs.org/docs/architecture/turbopack#unsupported-features)
 > and Webpack is used instead).
 >
@@ -220,8 +208,8 @@ incremental bundler written in Rust. To benefit it, simple append the
 
 ## Drop Support of `theme.config` Files
 
-Nextra 4 no longer support `theme.config` files, which were previously used for
-configuring your theme options, `theme` and `themeConfig` option were removed:
+Nextra 4 no longer support `theme.config` files, which were previously used for configuring your
+theme options, `theme` and `themeConfig` option were removed:
 
 ```diff filename="next.config.mjs"
 const withNextra = nextra({
@@ -232,20 +220,17 @@ const withNextra = nextra({
 
 > [!NOTE]
 >
-> Previously theme config options now should be passed as `props` for
-> `<Layout>`, `<Navbar>`, `<Footer>`, `<Search>` and `<Banner>` components in
-> `app/layout.jsx` file.
+> Previously theme config options now should be passed as `props` for `<Layout>`, `<Navbar>`,
+> `<Footer>`, `<Search>` and `<Banner>` components in `app/layout.jsx` file.
 
 ## New Search Engine – Pagefind
 
-Search engine was migrated from
-[Flexsearch](https://github.com/nextapps-de/flexsearch) written in JavaScript to
-Rust-powered [Pagefind](https://pagefind.app).
+Search engine was migrated from [Flexsearch](https://github.com/nextapps-de/flexsearch) written in
+JavaScript to Rust-powered [Pagefind](https://pagefind.app).
 
 ### Benefits
 
-Pagefind is _**MUCH**_ faster and has _**MUCH**_ better search results than
-Flexsearch:
+Pagefind is _**MUCH**_ faster and has _**MUCH**_ better search results than Flexsearch:
 
 1. Indexing remote MDX
 
@@ -326,8 +311,8 @@ Flexsearch:
 >    to tag your main content area which you want to index
 > 1. You can ignore indexing of specific tags by adding
 >    [`data-pagefind-ignore` attribute](https://pagefind.app/docs/indexing/#removing-individual-elements-from-the-index)
-> 1. For MDX pages while using `nextra-theme-docs` and `nextra-theme-blog` **you
->    don't need to add** `data-pagefind-body` attribute
+> 1. For MDX pages while using `nextra-theme-docs` and `nextra-theme-blog` **you don't need to add**
+>    `data-pagefind-body` attribute
 
 ### Setup [#pagefind-setup]
 
@@ -340,8 +325,7 @@ npm i -D pagefind
 ```
 <h4>Add `postbuild` script</h4>
 
-Pagefind indexes `.html` pages and search indexing should be done after building
-your application:
+Pagefind indexes `.html` pages and search indexing should be done after building your application:
 
 ```json filename="package.json" {4}
 "scripts": {
@@ -354,8 +338,8 @@ your application:
 <h4>Enable `pre`/`post` scripts (_optional_)</h4>
 
 Some package managers like `pnpm@8` by default
-[don't execute `pre/post` scripts](https://pnpm.io/8.x/cli/run#enable-pre-post-scripts),
-you should enable it via `.npmrc` file via `enable-pre-post-scripts` setting:
+[don't execute `pre/post` scripts](https://pnpm.io/8.x/cli/run#enable-pre-post-scripts), you should
+enable it via `.npmrc` file via `enable-pre-post-scripts` setting:
 
 ```text filename=".npmrc"
 enable-pre-post-scripts=true
@@ -368,8 +352,8 @@ enable-pre-post-scripts=true
 
 <h4>Add `_pagefind/` directory to `.gitignore` file</h4>
 
-You don't need to commit `_pagefind/` directory to your git repository, he
-should be always newly generated.
+You don't need to commit `_pagefind/` directory to your git repository, he should be always newly
+generated.
 
 ```text filename=".gitignore" {3}
 node_modules/
@@ -379,9 +363,9 @@ _pagefind/
 
 <h4>Use `<Search>` component in your custom theme</h4>
 
-Search from `nextra-theme-docs` was exported in `nextra/components`. With this
-change `nextra-theme-blog` received search feature too. And you can benefit from
-it as well in your custom themes.
+Search from `nextra-theme-docs` was exported in `nextra/components`. With this change
+`nextra-theme-blog` received search feature too. And you can benefit from it as well in your custom
+themes.
 
 ```jsx filename="app/layout.jsx" {1,8}
 import { Search } from 'nextra/components'
@@ -410,15 +394,15 @@ export function RootLayout({ children }) {
 
 ## RSC I18n Support
 
-Thanks to server components, we no longer need to ship to client translation
-dictionary files, e.g `./dictionaries/en.json`. We can dynamically load
-translations in server components and pass according translation as `props` to
-`<Layout>`, `<Banner>`, `<Footer>`, etc. components in `app/[lang]/layout.jsx`.
+Thanks to server components, we no longer need to ship to client translation dictionary files, e.g
+`./dictionaries/en.json`. We can dynamically load translations in server components and pass
+according translation as `props` to `<Layout>`, `<Banner>`, `<Footer>`, etc. components in
+`app/[lang]/layout.jsx`.
 
 ### Example
 
-Below an example of server components i18n using `nextra-theme-docs`, but the
-same approach should be applied for your custom theme:
+Below an example of server components i18n using `nextra-theme-docs`, but the same approach should
+be applied for your custom theme:
 
 <ExampleLayoutForI18nDocsTheme />
 
@@ -436,9 +420,7 @@ const dictionaries = {
 }
 
 export async function getDictionary(locale) {
-  const { default: dictionary } = await (
-    dictionaries[locale] || dictionaries.en
-  )()
+  const { default: dictionary } = await (dictionaries[locale] || dictionaries.en)()
 
   return dictionary
 }
@@ -469,10 +451,10 @@ export function getDirection(locale) {
 
 ### Zustand
 
-All previous React context usages were migrated to
-[zustand](https://github.com/pmndrs/zustand) except places where we need
-[dependency injection](https://en.wikipedia.org/wiki/Dependency_injection). This
-applies only to the `useConfig` and `useThemeConfig` hooks which needs
+All previous React context usages were migrated to [zustand](https://github.com/pmndrs/zustand)
+except places where we need
+[dependency injection](https://en.wikipedia.org/wiki/Dependency_injection). This applies only to the
+`useConfig` and `useThemeConfig` hooks which needs
 [initialize their state with props](https://zustand.docs.pmnd.rs/guides/initialize-state-with-props).
 
 ### Headings have animation for `:target` state
@@ -495,8 +477,7 @@ Example of `app/layout.jsx` for Nextra documentation theme:
 
 <h4 id="use-mdx-components">Add an `mdx-components.jsx` file</h4>
 
-Create an `mdx-components.jsx` file in the root of your project to define global
-MDX Components:
+Create an `mdx-components.jsx` file in the root of your project to define global MDX Components:
 
 ```jsx filename="mdx-components.jsx"
 import { useMDXComponents as getDocsMDXComponents } from 'nextra-theme-docs'
@@ -585,25 +566,21 @@ Previously optional peer dependency `react-cusdis` was removed, since:
 - this library is no longer maintained
 - has only React 17 specified in `peerDependencies`
 
-We use [Cusdis SDK](https://cusdis.com/doc#/advanced/sdk) directly in
-`<Comments>`[^9] component.
+We use [Cusdis SDK](https://cusdis.com/doc#/advanced/sdk) directly in `<Comments>`[^9] component.
 
 ### `next-view-transitions` was added
 
 Blog received support of
-[View Transitions API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API)
-by using
-[`next-view-transitions`](https://github.com/shuding/next-view-transitions)
-package.
+[View Transitions API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API) by
+using [`next-view-transitions`](https://github.com/shuding/next-view-transitions) package.
 
 <Video alt="Demo View Transitions API" src="/blog-assets/nextra-4/view-transitions-api.mp4" />
 
 ### Use Built-in Nextra `<Search>`
 
-`nextra-theme-blog` v4 is the first version where you can use built-in search.
-To do it, import `<Search>` component from `nextra/components` and place it as
-children of `<Navbar>` component, then follow
-[search setup steps](#pagefind-setup).
+`nextra-theme-blog` v4 is the first version where you can use built-in search. To do it, import
+`<Search>` component from `nextra/components` and place it as children of `<Navbar>` component, then
+follow [search setup steps](#pagefind-setup).
 
 ```jsx filename="app/layout.jsx" {7}
 <Navbar
@@ -630,8 +607,7 @@ Example of `app/layout.jsx` for Nextra blog theme:
 
 <h4 id="use-mdx-components2">Add an `mdx-components.jsx` file</h4>
 
-Create an `mdx-components.jsx` file in the root of your project to define global
-MDX Components:
+Create an `mdx-components.jsx` file in the root of your project to define global MDX Components:
 
 ```jsx filename="mdx-components.jsx"
 import { useMDXComponents as getBlogMDXComponents } from 'nextra-theme-blog'
@@ -676,15 +652,14 @@ Nextra 4 requires at least Next.js 14 to be installed in your project.
 
 ### Update your `tsconfig.json`
 
-If you are using TypeScript and have `moduleResolution` set to `node`, you will
-receive type errors:
+If you are using TypeScript and have `moduleResolution` set to `node`, you will receive type errors:
 
 ```text
 Type error: Cannot find module 'nextra/components' or its corresponding type declarations.
 ```
 
-`"typesVersions"` fields from `package.json`'s of Nextra packages were removed.
-You need to set `"moduleResolution": "bundler"` in your `tsconfig.json`.
+`"typesVersions"` fields from `package.json`'s of Nextra packages were removed. You need to set
+`"moduleResolution": "bundler"` in your `tsconfig.json`.
 
 ```diff filename="tsconfig.json"
 {
@@ -697,11 +672,10 @@ You need to set `"moduleResolution": "bundler"` in your `tsconfig.json`.
 
 ### Overriding Code Block Icons
 
-You can now override or add additional icons for code blocks. Here is an example
-how to do it for `nextra-theme-docs`, but it's the same approach for custom
-themes. Import `withIcons` HOC function from `nextra/components`, Wrap the `Pre`
-component with `withIcons`, passing in your custom icon for the desired
-language.
+You can now override or add additional icons for code blocks. Here is an example how to do it for
+`nextra-theme-docs`, but it's the same approach for custom themes. Import `withIcons` HOC function
+from `nextra/components`, Wrap the `Pre` component with `withIcons`, passing in your custom icon for
+the desired language.
 
 ```jsx filename="mdx-components.jsx"
 import { useMDXComponents as useDocsMDXComponents } from 'nextra-theme-docs'
@@ -722,8 +696,8 @@ export function useMDXComponents(components) {
 
 ### Component Migration: Moving UI Elements
 
-Several components were migrated from `nextra-theme-docs` to `nextra/components`
-to make them accessible for use in your custom themes:
+Several components were migrated from `nextra-theme-docs` to `nextra/components` to make them
+accessible for use in your custom themes:
 
 - `<Collapse>`
 - `<Details>`
@@ -736,8 +710,8 @@ to make them accessible for use in your custom themes:
 
 > [!TIP]
 >
-> With migration `<Head>` component to `nextra/components`, both
-> `nextra-theme-blog` and your custom themes can now configure:
+> With migration `<Head>` component to `nextra/components`, both `nextra-theme-blog` and your custom
+> themes can now configure:
 >
 > - primary color, `color` prop
 > - background color, `backgroundColor` prop
@@ -781,17 +755,16 @@ Here’s the table sorted alphabetically by component name:
 
 ### Improvements for `_meta` Files
 
-1. [zod](https://github.com/colinhacks/zod) now parses and transforms `_meta`
-   files on server, to improve DX and avoid typos
+1. [zod](https://github.com/colinhacks/zod) now parses and transforms `_meta` files on server, to
+   improve DX and avoid typos
 1. The `_meta`'s `newWindow` field was removed
-1. All external links declared in `_meta` files now opens in a new tab with with
-   `rel="noreferrer"` attribute and have visual `↗` suffix icon
+1. All external links declared in `_meta` files now opens in a new tab with with `rel="noreferrer"`
+   attribute and have visual `↗` suffix icon
 
 ### External Markdown Links Have `↗` Suffix Icon
 
-All external Markdown links declared in MDX files now opens in a new tab with
-with `rel="noreferrer"` attribute and have visual `↗` suffix icon. (Was
-inspired from Next.js docs)
+All external Markdown links declared in MDX files now opens in a new tab with with
+`rel="noreferrer"` attribute and have visual `↗` suffix icon. (Was inspired from Next.js docs)
 
 Example:
 
@@ -810,26 +783,24 @@ Will compiles to:
 
 ### `::selection` Styles
 
-Variant of primary color which is set via `color` prop on `<Head>` component is
-now used for `::selection` styles.
+Variant of primary color which is set via `color` prop on `<Head>` component is now used for
+`::selection` styles.
 
 ## Next Steps
 
-Nextra 4 is a major release with a lot of breaking changes. I plan to cut a
-stable release after a couple of weeks of testing and receiving your feedback. I
-already created a roadmap for next major release
-[Nextra 5](https://github.com/shuding/nextra/issues/3316), where the main goal
-will be using new React compiler (for Nextra's packages) and optional using
-Rust-powered MDX [`mdxjs-rs` parser](https://github.com/wooorm/mdxjs-rs). Share
-your thoughts as well.
+Nextra 4 is a major release with a lot of breaking changes. I plan to cut a stable release after a
+couple of weeks of testing and receiving your feedback. I already created a roadmap for next major
+release [Nextra 5](https://github.com/shuding/nextra/issues/3316), where the main goal will be using
+new React compiler (for Nextra's packages) and optional using Rust-powered MDX
+[`mdxjs-rs` parser](https://github.com/wooorm/mdxjs-rs). Share your thoughts as well.
 
 ## Credits
 
 A sincere thank for
 [the most active Nextra contributor](https://github.com/shuding/nextra/pulls?q=sort%3Aupdated-desc+is%3Apr+author%3A87xie),
 I can even name him as a perfect example of a great Open Source contributor
-[Oscar Xie](https://github.com/87xie)! His amazing contributions previously
-pushed me a lot to release Nextra 3!
+[Oscar Xie](https://github.com/87xie)! His amazing contributions previously pushed me a lot to
+release Nextra 3!
 
 Huge thanks for Nextra sponsors:
 
@@ -837,12 +808,11 @@ Huge thanks for Nextra sponsors:
 
 - [Speakeasy – SDKs & Terraform Providers for Your API](https://speakeasy.com?utm_source=the-guild.dev&utm_campaign=nextra-4-blog&utm_content=blog_post)
 
-[Become a Nextra's sponsor](https://github.com/sponsors/dimaMachina) and your logo will be visible in Nextra GitHub
-repository and [Nextra website](https://nextra.site)!
+[Become a Nextra's sponsor](https://github.com/sponsors/dimaMachina) and your logo will be visible
+in Nextra GitHub repository and [Nextra website](https://nextra.site)!
 
-Help spread the word about Nextra on [X](https://x.com) using the `#Nextra`
-hashtag. Also, feel free to follow me on [X](https://x.com/dimaMachina_) and
-[GitHub](https://github.com/dimaMachina)!
+Help spread the word about Nextra on [X](https://x.com) using the `#Nextra` hashtag. Also, feel free
+to follow me on [X](https://x.com/dimaMachina_) and [GitHub](https://github.com/dimaMachina)!
 
 ---
 

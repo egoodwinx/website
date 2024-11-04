@@ -11,12 +11,7 @@ export const metadata = {
 }
 
 const banner = <Banner storageKey="some-key">Nextra 4.0 is released 🎉</Banner>
-const navbar = (
-  <Navbar
-    logo={<b>Nextra</b>}
-    projectLink="https://github.com/shuding/nextra"
-  />
-)
+const navbar = <Navbar logo={<b>Nextra</b>} projectLink="https://github.com/shuding/nextra" />
 const footer = (
   <Footer className="flex-col items-center md:items-start">
     MIT {new Date().getFullYear()} © Nextra.

@@ -59,7 +59,7 @@ const IGNORE_CASING_WORDS = [
   'LaTeX',
   'MikroORM',
   'GraphQL.js',
-  'RSC'
+  'RSC',
 ];
 
 module.exports = {

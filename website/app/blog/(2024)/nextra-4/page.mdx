@@ -314,6 +314,7 @@ Pagefind is _**MUCH**_ faster and has _**MUCH**_ better search results than Flex
 > 1. For MDX pages while using `nextra-theme-docs` and `nextra-theme-blog` **you don't need to add**
 >    `data-pagefind-body` attribute
 
+{/* eslint-disable-next-line */}
 ### Setup [#pagefind-setup]
 
 New search engine requires few steps to setup:
@@ -457,7 +458,7 @@ except places where we need
 `useConfig` and `useThemeConfig` hooks which needs
 [initialize their state with props](https://zustand.docs.pmnd.rs/guides/initialize-state-with-props).
 
-### Headings have animation for `:target` state
+### Headings Have Animation for `:target` State
 
 <Video
   alt="Example animation for headings for `:target` state"
@@ -559,7 +560,7 @@ export function useMDXComponents(components) {
 
 ## `nextra-theme-blog`
 
-### `react-cusdis` was removed
+### `react-cusdis` Was Removed
 
 Previously optional peer dependency `react-cusdis` was removed, since:
 
@@ -568,7 +569,7 @@ Previously optional peer dependency `react-cusdis` was removed, since:
 
 We use [Cusdis SDK](https://cusdis.com/doc#/advanced/sdk) directly in `<Comments>`[^9] component.
 
-### `next-view-transitions` was added
+### `next-view-transitions` Was Added
 
 Blog received support of
 [View Transitions API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API) by
@@ -576,7 +577,7 @@ using [`next-view-transitions`](https://github.com/shuding/next-view-transitions
 
 <Video alt="Demo View Transitions API" src="/blog-assets/nextra-4/view-transitions-api.mp4" />
 
-### Use Built-in Nextra `<Search>`
+### Use Built-In Nextra `<Search>`
 
 `nextra-theme-blog` v4 is the first version where you can use built-in search. To do it, import
 `<Search>` component from `nextra/components` and place it as children of `<Navbar>` component, then
@@ -646,11 +647,11 @@ export function useMDXComponents(components) {
 
 ## Various Changes
 
-### Bump minimal Next.js to v14
+### Bump Minimal Next.js to V14
 
 Nextra 4 requires at least Next.js 14 to be installed in your project.
 
-### Update your `tsconfig.json`
+### Update Your `tsconfig.json`
 
 If you are using TypeScript and have `moduleResolution` set to `node`, you will receive type errors:
 
